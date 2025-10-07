@@ -51,14 +51,14 @@ trait Componentable
      *
      * @return string
      */
-    protected function renderComponent($name, array $arguments): string
+    protected function renderComponent($name, array $arguments)
     {
         $component = static::$components[$name];
         $data = $this->getComponentData($component['signature'], $arguments);
 
-        return (new HtmlString(
+        return new HtmlString(
           $this->view->make($component['view'], $data)->render()
-        ))->toHtml();
+        );
     }
 
     /**
